@@ -8,7 +8,7 @@
     margin: 12px;
     padding: 3px;
     background: rgba(255, 255, 255, 0.5);
-    border-radius: 6px;
+    border-radius: 2px;
 }
 
 .item-photo {
@@ -59,28 +59,71 @@
 	-webkit-mask-box-image: url("images/stores.png");
 }
 
-/*66CCFF*/
-#jitterz-tabstrip,
-#jitterz-default-header .km-navbar,
-#jitterz-tabstrip .km-state-active .km-icon,
-#jitterz-default-header .km-navbar .km-button
-{
-	background-color: #66ccff;
-}
-
-.km-ios .km-navbar
-{
-	background-image: -webkit-linear-gradient(bottom, #3399cc 30%, #66ccff 71%);
-}
-
 .km-ios #jitterz-tabstrip
 {
 	border-top: 2px solid #66ccff;
 }
 
-#home .km-content
-{
-    background-image: url("images/hot-coffee.jpg");
-    background-size: auto 100%;
+
+/*=========== KENDO UI MOBILE THEME BUILDER CUSTOM IOS/ANDROID STYLES ===========*/
+.km-ios .km-view .km-navbar {
+    background-color: rgb(95, 73, 53);
+    background-image: -webkit-gradient(linear,50% 0,50% 100%,color-stop(0, rgba(0,0,0,.2)),color-stop(1, rgba(0,0,0,.69)));
+    background-image: -moz-linear-gradient(50% 0,50% 100%,rgba(0,0,0,.2),rgba(0,0,0,.69));
+    background-repeat: repeat;
+    background-position: 0 0;
+    box-shadow: 0px 2px 2px #000;
 }
+.km-ios .km-view .km-content {
+    background-color: rgb(127, 127, 127);
+    background-image: none;
+    background-image: none;
+    background-repeat: ,repeat;
+    background-position: ,0% 0%;
+    font-family: HelveticaNeue, Roboto, 'Myriad Pro', 'Nokia Pure', Arial, sans-serif;
+    font-size: 12px;
+    font-weight: normal;
+    font-style: normal;
+    line-height: normal;
+    text-shadow: none;
+}
+
+.km-ios .km-view .km-content .km-list .km-state-active .km-listview-link {
+    background-color: rgb(95, 73, 53);
+    background-image: none;
+    background-image: none;
+    background-repeat: repeat;
+    background-position: 0 0;
+}
+.km-ios .km-view .km-navbar .km-button.km-state-active {
+    background-color: rgb(11, 128, 0);
+}
+.km-ios .km-view .km-navbar .km-button {
+    background-color: rgb(11, 128, 0);
+}
+.km-ios .km-view .km-content .km-listgroupinset .km-group-title .km-text {
+    color: rgb(255, 255, 255);
+}
+.km-ios .km-view .km-content .km-button.km-state-active {
+    background-color: rgb(11, 128, 0);
+}
+.km-ios .km-view .km-content .km-listgroup .km-group-title {
+    background-color: rgb(11, 128, 0);
+}
+.km-android .km-view .km-tabstrip .km-state-active span.km-icon, .km-ios .km-view .km-tabstrip .km-state-active span.km-icon {
+    background: rgb(11, 128, 0);
+}
+.km-android .km-view .km-tabstrip {
+    background-color: rgb(11, 128, 0);
+}
+.km-android .km-view .km-content .km-list .km-state-active .km-listview-link {
+    background-color: rgb(95, 73, 53);
+}
+.km-android .km-view .km-navbar .km-button.km-state-active {
+    background-color: rgb(11, 128, 0);
+}
+.km-android .km-view .km-content .km-button.km-state-active {
+    background-color: rgb(11, 128, 0);
+}
+
 

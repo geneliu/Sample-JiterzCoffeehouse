@@ -46,17 +46,17 @@
 
 .km-card
 {
-	-webkit-mask-box-image: url("../icons/card.png");
+	-webkit-mask-box-image: url("images/card.png");
 }
 
 .km-rewards
 {
-	-webkit-mask-box-image: url("../icons/rewards.png");
+	-webkit-mask-box-image: url("images/rewards.png");
 }
 
 .km-stores
 {
-	-webkit-mask-box-image: url("../icons/stores.png");
+	-webkit-mask-box-image: url("images/stores.png");
 }
 
 /*66CCFF*/
@@ -80,7 +80,7 @@
 
 #home .km-content
 {
-    background-image: url("../images/hot-coffee.jpg");
+    background-image: url("images/hot-coffee.jpg");
     background-size: auto 100%;
 }
 

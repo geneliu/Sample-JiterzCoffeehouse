@@ -59,11 +59,33 @@
 	-webkit-mask-box-image: url("images/stores.png");
 }
 
+.km-locate
+{
+    -webkit-mask-box-image: url("images/iconLocate.png");
+}
+
 .km-ios #jitterz-tabstrip
 {
 	border-top: 2px solid #66ccff;
 }
 
+/*=========== MANUAL KENDO UI OVERRIDES =============*/
+.km-ios .km-buttongroup .km-button{
+    font-size:12px;
+}
+
+.km-header{
+    text-align: center;
+}
+
+.km-navbar .km-view-title{
+    margin-top:.3rem;
+}
+
+.km-buttongroup .km-button{
+    padding:0em 1.5em;
+    margin:0;
+}
 
 /*=========== KENDO UI MOBILE THEME BUILDER CUSTOM IOS/ANDROID STYLES ===========*/
 .km-ios .km-view .km-navbar {

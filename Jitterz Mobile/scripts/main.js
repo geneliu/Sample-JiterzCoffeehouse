@@ -139,6 +139,9 @@ window.JitterzApp = (function($,console,document){
 					},
 					function(error){ alert(error.message); /*TODO: Better handling*/ }
 				);
+		},
+		storesInit: function(){
+			$("#btnRefreshMap").on("click", function(){ JitterzApp.storesShow(); });
 		}
 	};
 

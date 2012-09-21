@@ -2,7 +2,8 @@ var JitterzData = function(){
 	var _endpoints;
 
 	_endpoints = {
-		starbucksLocs: {path:"http://www.starbucks.com/api/location.ashx?&features=&lat={LAT}&long={LONG}&limit={MAX}",verb:"GET"}
+		starbucksLocs: {path:"http://www.starbucks.com/api/location.ashx?&features=&lat={LAT}&long={LONG}&limit={MAX}",verb:"GET"},
+        starbucksTest: {path:"scripts/testData/starbucksTest.json",verb:"GET"}
 	};
 
 	var _private = {
@@ -39,6 +40,11 @@ var JitterzData = function(){
             route.path = route.path.replace(/{LAT}/g, lat);
             route.path = route.path.replace(/{LONG}/g, lng);
             route.path = route.path.replace(/{MAX}/g, max || 10);
+
+            if(document.location.hostname == "coffee"){
+                //Test environment (localhost) - fake response
+                route = $.extend({}, _endpoints.starbucksTest);
+            }
 
             return _private.load(route, {});
 		}

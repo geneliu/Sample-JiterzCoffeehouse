@@ -114,14 +114,13 @@
 				});
 		},
 		addMarkers: function(locations, mapObj){
-			console.log("HERE",locations);
 			var marker,
 			    i = 0,
 				len = locations.length;
 
 			for (i = 0; i < len; i++) {				
 				var tmpLocation = locations[i];
-				console.log("ADDING MARKER", tmpLocation);
+
 				marker = new google.maps.Marker({
 					position:tmpLocation.position,
 					map:mapObj,

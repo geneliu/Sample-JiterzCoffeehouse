@@ -1,15 +1,19 @@
 //TODO: Decompose larger funcitons in to more managable modules
 
 //Create applicaiton object closure
-window.JitterzApp = (function($,console,document){
+(function($,console,doc){
 	//Declar all private app variables
-	var _mapElem,
+	var _app,
+		_mapElem,
 		_mapObj,
+		_storeListElem,
 		_private,
 		_appData = new JitterzData(),
 		_announcementData,
+		_isOnline = navigator.onLine,
 		//TEMPLATES
 		_tmplAnnouncements = kendo.template($("#announcement-listview-template").html()),
+		_tmplStoreList,
 		//UI ELEMENTS
 		$announcementsEle = $("#announcements-listview");
 
@@ -21,21 +25,29 @@ window.JitterzApp = (function($,console,document){
 
 	//Private methods
 	_private = {
-		getLocation: function(successCallback, errorCallback, options){
+		getLocation: function(options){
+			var dfd = new $.Deferred();
+
 			//Default value for options
 			if(options === undefined){ options = {enableHighAccuracy: true}; }
 
 			navigator.geolocation.getCurrentPosition(
-				successCallback, 
-				errorCallback, 
+				function(position){ 
+					dfd.resolve(position);
+				}, 
+				function(error){
+					dfd.reject(error);
+				}, 
 				options);
+
+			return dfd.promise();
 		},
 		initMap: function(position){
 			//Delcare function variables
 			var laglng,
 				myOptions,
 				mapObj = _mapObj,
-				mapElem = _mapElem || document.getElementById("map"),
+				mapElem = _mapElem,
 				marker,
 				pin,
 				locations = [];
@@ -102,14 +114,13 @@ window.JitterzApp = (function($,console,document){
 				});
 		},
 		addMarkers: function(locations, mapObj){
-			console.log("HERE",locations);
 			var marker,
 			    i = 0,
 				len = locations.length;
 
 			for (i = 0; i < len; i++) {				
 				var tmpLocation = locations[i];
-				console.log("ADDING MARKER", tmpLocation);
+
 				marker = new google.maps.Marker({
 					position:tmpLocation.position,
 					map:mapObj,
@@ -119,11 +130,46 @@ window.JitterzApp = (function($,console,document){
 					animation: tmpLocation.animation
 				});
 			};			
+		},
+		initStoreList: function(position){
+			_appData.getStarbucksLocations(position.coords.latitude, position.coords.longitude)
+				.done(function(data){
+					//TODO: Bind data to listview
+					$(_storeListElem).kendoMobileListView({
+						dataSource: kendo.data.DataSource.create({ data: data }),
+						template: _tmplStoreList
+					});
+				})
+				.fail();
+		},
+		toggleStoreView: function(index){
+			var isMap = (index === 0);
+
+			_private.getLocation()
+				.done(function(position){ 
+					if(isMap){
+						$(_storeListElem).hide();
+						$(_mapElem).show();
+
+						_private.initMap(position);
+					}else{
+						$(_storeListElem).show();
+						$(_mapElem).hide();
+
+						_private.initStoreList(position);
+					} 
+				})
+				.fail(function(error){ 
+					console.log(error); /*TODO: Better handling*/ 
+				});			
 		}
 	};
 
 	//PUBLIC API
-	return {
+	_app = {
+		init: function(){
+			//TODO: Wire-up online status change event listener
+		},
 		homeInit: function(){
 			//Init MobileListView
 			$announcementsEle.kendoMobileListView({
@@ -132,17 +178,41 @@ window.JitterzApp = (function($,console,document){
 			});
 		},
 		storesShow: function(){
-			_private.getLocation(
-					function(position){ 
-						console.log("POSITION", position)
+			//Don't attempt to reload map/sb data if offline
+			console.log("ONLINE", _isOnline);
+			if(_isOnline === false){				
+				alert("Please reconnect to the Internet to load locations.");
+
+				return;
+			}
+
+			_private.getLocation()
+				.done(function(position){ 
 						_private.initMap(position); 
-					},
-					function(error){ alert(error.message); /*TODO: Better handling*/ }
-				);
+				})
+				.fail(function(error){ 
+					alert(error.message); /*TODO: Better handling*/ 
+				});
 		},
 		storesInit: function(){
+			_mapElem = document.getElementById("map");
+			_storeListElem = document.getElementById("storeList");
+			_tmplStoreList = kendo.template($("#tmplStoreListItem").html());
+
 			$("#btnRefreshMap").on("click", function(){ JitterzApp.storesShow(); });
+
+			$("#btnStoreViewToggle").data("kendoMobileButtonGroup")
+				.bind("select", function(e){
+				_private.toggleStoreView(e.sender.selectedIndex);
+			})
+		},
+		get_isOnline: function(){
+			return _isOnline;
 		}
 	};
+
+	_app.init();
+
+	window.JitterzApp = _app;
 
 }(jQuery, console, document));

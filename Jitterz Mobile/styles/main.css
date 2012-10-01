@@ -1,3 +1,13 @@
+.offline{
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    padding-top:30%;
+    color: rgb(20,20,20);
+    text-shadow:0 -1px rgba(225,225,225,0.3);
+    font-size:1rem;
+}
+
 #map
 {
 	height: 365px;

@@ -49,6 +49,42 @@
     width: 61%;
 }
 
+/*############ VIEW: CARDS ################*/
+#cardWrapper{
+    position:relative;
+    width:280px;
+    height:185px;
+    top:10px;
+    left:50px;
+}
+
+#cardFront,#cardBack,#cardContainer{
+    position:absolute;
+    width:280px;
+    height:185px;
+}
+
+#cardFront,#cardBack{
+    border:solid 1px #000;  
+    background:green;       
+}
+#cardBack{
+    background:red;
+}
+
+#scanNow{
+    height:90px;
+    width:60px;
+    border:solid 1px white;
+    margin:50px auto 0;
+}
+
+.spinning{
+
+}
+
+/*###########################################*/
+
 .km-ios #home .km-list
 {
     background: rgba(255, 255, 255, 0.5);

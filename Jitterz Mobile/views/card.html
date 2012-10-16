@@ -4,9 +4,22 @@
 </head>
 <body>
 	<!-- CARD page -->
-    <div data-role="view" id="card" data-title="Card">
+    <div data-role="view" id="card" data-title="Card" data-init="JitterzApp.cardInit('#cardFront','#cardBack','#cardContainer','#cardWrapper')">
 		<div data-role="content">
-        Card Page
+			<div id="cardWrapper">
+				<div id="cardContainer">		        	
+		        	<div id="cardBack">
+		        		CARD BACK
+		        	</div>
+		        	<div id="cardFront">
+		        		CARD
+		        	</div>
+	        	</div>
+	        </div>
+
+	        <div class="spinning" id="scanNow">
+	        	Scan Now
+	        </div>
         </div>
     </div>
 </body>

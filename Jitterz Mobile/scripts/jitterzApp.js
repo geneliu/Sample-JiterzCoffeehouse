@@ -170,6 +170,30 @@
 		init: function(){
 			//TODO: Wire-up online status change event listener
 		},
+		cardInit: function(eleFront,eleBack,eleContainer,eleWrapper){
+			//Setup card flip interaction
+			//TODO: Refactor selector caching 
+			var ccFront = $(eleFront),
+				ccBack = $(eleBack),
+				ccContainer = $(eleContainer),
+				ccWrapper = $(eleWrapper),
+				isFlipped = false,
+				face = (isFlipped) ? ccBack : ccFront,
+				back = (isFlipped) ? ccFront : ccBack,
+				degree = (isFlipped) ? 0 : 180;
+
+			ccContainer.on("click", function(){
+				ccWrapper.kendoAnimate({
+					effects: "flip:horizontal",
+					duration: 1500,
+					degree: degree,
+					face: face,
+					back: back,
+					reverse: isFlipped,				
+					complete: function(){ isFlipped = !isFlipped; }
+				})
+			});
+		},
 		homeInit: function(){
 			//Init MobileListView
 			$announcementsEle.kendoMobileListView({

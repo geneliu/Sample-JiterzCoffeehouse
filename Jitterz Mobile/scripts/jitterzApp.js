@@ -170,13 +170,15 @@
 		init: function(){
 			//TODO: Wire-up online status change event listener
 		},
-		cardInit: function(eleFront,eleBack,eleContainer,eleWrapper){
+		cardInit: function(eleFront,eleBack,eleContainer,eleWrapper,eleSpinner, eleBalance){
 			//Setup card flip interaction
 			//TODO: Refactor selector caching 
 			var ccFront = $(eleFront),
 				ccBack = $(eleBack),
 				ccContainer = $(eleContainer),
 				ccWrapper = $(eleWrapper),
+				ccSpinner = $(eleSpinner),
+				ccBalance = $(eleBalance),
 				isFlipped = false,
 				face = (isFlipped) ? ccBack : ccFront,
 				back = (isFlipped) ? ccFront : ccBack,
@@ -190,7 +192,12 @@
 					face: face,
 					back: back,
 					reverse: isFlipped,				
-					complete: function(){ isFlipped = !isFlipped; }
+					complete: function(){ 
+						isFlipped = !isFlipped; 
+
+						(isFlipped) ? ccSpinner.fadeIn() : ccSpinner.hide();
+						(isFlipped) ? ccBalance.hide() : ccBalance.fadeIn();
+					}
 				})
 			});
 

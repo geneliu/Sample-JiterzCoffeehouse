@@ -4,7 +4,7 @@
 </head>
 <body>
 	<!-- CARD page -->
-    <div data-role="view" id="card" data-title="Card" data-init="JitterzApp.cardInit('#cardFront','#cardBack','#cardContainer','#cardWrapper')">
+    <div data-role="view" id="card" data-title="Card" data-init="JitterzApp.cardInit('#cardFront','#cardBack','#cardContainer','#cardWrapper', '#scanNow', '#cardBalance')">
 		<div data-role="content">
 			<div id="cardWrapper">
 				<div id="cardContainer">		        	
@@ -13,9 +13,14 @@
 		        		<figure>123456789</figure>
 		        	</div>
 		        	<div id="cardFront">
-		        		CARD
+		        		<p>TAP CARD TO PAY<p>
 		        	</div>
 	        	</div>
+	        </div>
+
+	        <div id="cardBalance">
+	        	<span class="amt">$12.45</span>
+	        	<aside>Last updated: 12 Oct</aside>
 	        </div>
 
 	        <div class="spinning" id="scanNow">

@@ -69,18 +69,65 @@
     background:green;       
 }
 #cardBack{
-    background:red;
+    background:#CCC;
+}
+
+#cardBack figure {
+    width:80%;
+    height:25%;
+    margin:0;
+    position: absolute;
+    bottom: 20%;
+    left: 10%;
+}
+
+#cardBalance{
+    margin:10% auto;
+    width:38%;
+    padding:5%;
+    border:solid 1px #000;
+    text-align: center;
+    border-radius: 5px;
+    background: -webkit-linear-gradient(top, #e8c574 0%,#996d00 100%);
+    background: linear-gradient(to bottom, #e8c574 0%,#996d00 100%);
+}
+
+#cardBalance .amt {
+    font-size:1.5rem;
+}
+
+#cardBalance aside{
+    font-style: italic;
 }
 
 #scanNow{
-    height:90px;
-    width:60px;
-    border:solid 1px white;
+    height:50px;
+    width:100px;
     margin:50px auto 0;
+    /*background: url(images/noun_CoffeeCup.svg) no-repeat 0 0;*/
+    -webkit-mask-box-image: url(images/noun_CoffeeCup.svg);
+    background:white;
+    text-align: center;
+    padding-top:50px;
+    font: bold 11px sans-serif;
+    display:none;
+}
+
+@-webkit-keyframes rotate {
+  from {
+    -webkit-transform: rotateY( 0deg );
+  }
+  to { 
+    -webkit-transform: rotateY(360deg);
+  }
 }
 
 .spinning{
-
+    transform-style: preserve-3d;
+    -webkit-animation-name:             rotate; 
+    -webkit-animation-duration:         2.5s; 
+    -webkit-animation-iteration-count:  infinite;
+    -webkit-animation-timing-function: ease-in-out;
 }
 
 /*###########################################*/

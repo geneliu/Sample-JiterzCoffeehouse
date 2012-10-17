@@ -193,6 +193,9 @@
 					complete: function(){ isFlipped = !isFlipped; }
 				})
 			});
+
+			//Init barcode
+			ccBack.children("figure").barcode({code:'I25'});
 		},
 		homeInit: function(){
 			//Init MobileListView

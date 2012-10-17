@@ -5,6 +5,12 @@
 <body>
 	<!-- CARD page -->
     <div data-role="view" id="card" data-title="Card" data-init="JitterzApp.cardInit('#cardFront','#cardBack','#cardContainer','#cardWrapper', '#scanNow', '#cardBalance')">
+    	<header data-role="header">
+	    	<div data-role="navbar">
+	    		<div data-role="view-title"></div>
+	    		<a data-role="button" class="titleButton" data-icon="add" data-align="right" id="btnAddCard"></a>
+	    	</div>
+	    </header>
 		<div data-role="content">
 			<div id="cardWrapper">
 				<div id="cardContainer">		        	

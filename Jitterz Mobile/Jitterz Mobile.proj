@@ -31,6 +31,7 @@
     <Folder Include="App_Resources\Android\drawable-ldpi">
       <Platform>Android</Platform>
     </Folder>
+    <Folder Include="views" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="App_Resources\iOS\icon.png" />
@@ -75,6 +76,7 @@
     <Content Include="kendo\styles\images\android-sprite.png" />
     <Content Include="kendo\styles\kendo.jitterz.mobile.all.css" />
     <Content Include="kendo\styles\kendo.mobile.all.min.css" />
+    <Content Include="scripts\appData.js" />
     <Content Include="scripts\card.js" />
     <Content Include="scripts\main.js" />
     <Content Include="styles\main.css" />
@@ -89,7 +91,14 @@
     <Content Include="styles\phone-1280.css" />
     <Content Include="styles\phone-480.css" />
     <Content Include="styles\phone-800.css" />
+    <Content Include="styles\tablet-1024-hdpi.css" />
     <Content Include="styles\tablet-1024-ldpi.css" />
+    <Content Include="styles\tablet-1280.css" />
+    <Content Include="styles\tablet-600-1024.css" />
+    <Content Include="views\addCardView.html" />
+    <Content Include="views\cardsView.html" />
+    <Content Include="views\rewardsView.html" />
+    <Content Include="views\storesView.html" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Telerik\ICE\Tools\Mobile\MobileTools.targets" />
 </Project>

@@ -24,6 +24,6 @@ initialCardData.prototype = function() {
 	};
     
 	return {
-		getInitialCardsData:getInitialCardsData,
+		getInitialCardsData: getInitialCardsData,
 	};
 }();

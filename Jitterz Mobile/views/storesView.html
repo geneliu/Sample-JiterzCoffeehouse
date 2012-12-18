@@ -1,0 +1,29 @@
+<div data-role="view" id="stores" data-title="Stores" data-show="storesShow" data-stretch="true">
+	<header data-role="header" data-id="jitterz-stores-header">
+		<div data-role="navbar">
+				<ul  id="storesNavigate" data-index="0">
+					<li>
+						Map
+					</li>
+					<li>
+						List
+					</li>
+				</ul>
+		</div>
+	</header>
+	<div id="mapwrap" data-role="content">
+        <div id="map"></div>
+	</div>
+	<div id="storeswrap" data-role="content" style="display:none;">
+        <div data-role="scroller">
+		    <ul data-role="listview" id="stores-listview" 
+		    	data-style="inset" data-type="group" >
+		    </ul>
+        </div>
+	</div>
+</div>
+
+<!--Templates-->     
+<script type="text/x-kendo-template" id="stores-listview-template">
+    <p>#:address.replace(/(&nbsp)/g," ")#</p>
+</script>

@@ -1,4 +1,4 @@
-var JitterzData = function(){
+var AppData = function(){
 	var _endpoints;
 
 	_endpoints = {

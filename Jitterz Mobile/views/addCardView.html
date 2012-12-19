@@ -3,7 +3,7 @@
 		<div data-role="navbar">
 			<a href="#cardsView" data-role="button" data-align="left">Cancel</a>
             <span data-role="view-title"></span>
-            <button data-role="button" data-align="right" id="buttonAddNewCardView"  data-bind="click: addNewCard, enabled: canAddCard">Add</button>
+            <button data-role="button" data-align="right" id="buttonAddNewCardView"  data-bind="events: { touchend: addNewCard }, enabled: canAddCard">Add</button>
 		</div>
 	</div>
     <div data-role="content">
@@ -15,7 +15,7 @@
         <ul class="addNewCardWrapper" data-role="listview" data-style="inset">
 			<li>
 				<label for="cardNumberField">Card Number </label>
-				<input type="number" id="cardNumberField" min="3" max="10" maxlength="10" maxlength="9" data-value-update="touch" data-bind="value: cardNumber, events: {keyup: cardIdChanged}"/>
+				<input type="number" id="cardNumberField" min="3" max="10" maxlength="10" maxlength="9" data-bind="value: cardNumber, events: { keyup: cardIdChanged }"/>
 			</li>
 		</ul>
 		<div id="addNewCardErrorLog"></div>

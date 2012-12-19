@@ -31,6 +31,7 @@
     <Folder Include="App_Resources\Android\drawable-ldpi">
       <Platform>Android</Platform>
     </Folder>
+    <Folder Include="viewModels" />
     <Folder Include="views" />
   </ItemGroup>
   <ItemGroup>
@@ -95,6 +96,7 @@
     <Content Include="styles\tablet-1024-ldpi.css" />
     <Content Include="styles\tablet-1280.css" />
     <Content Include="styles\tablet-600-1024.css" />
+    <Content Include="viewModels\viewModels.js" />
     <Content Include="views\addCardView.html" />
     <Content Include="views\cardsView.html" />
     <Content Include="views\rewardsView.html" />

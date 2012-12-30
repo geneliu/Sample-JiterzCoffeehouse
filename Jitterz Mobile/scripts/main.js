@@ -14,8 +14,6 @@ function onDeviceReady() {
 		_appData = new AppData(),
 		_announcementData,
 		_isOnline = true,
-		//TEMPLATES
-		_tmplAnnouncements = kendo.template($("#announcement-listview-template").html()),
 		_tmplStoreList,
 		//UI ELEMENTS
 		$announcementsEle = $("#announcements-listview");
@@ -162,17 +160,15 @@ function onDeviceReady() {
 		}
 	};
     
-    cardsData.init();
-    cardsData.cards.bind("change", writeIntoLocalStorage);
     _app = {
-    	init: function() {
+        init: function() {
             console.log(window.localStorage.getItem("cards"));
-            if(window.localStorage.getItem("cards")===null)
+            if(window.localStorage.getItem("cards") === null)
             {
                 var cardData = new initialCardData(),
                 initialCards = cardData.getInitialCardsData();
-                localStorage.setItem("cards",initialCards);
-            }  
+                localStorage.setItem("cards", initialCards);
+            }
         },
         announcementListViewTemplatesInit: function() {
             $announcementsEle.kendoMobileListView({
@@ -183,32 +179,41 @@ function onDeviceReady() {
         
     	onAddCardViewShow: function () {
     		$('#cardNumberField').focus();
-            var addCardViewModel = new AddCardViewModel();
-    		kendo.bind($("#addCardView"), addCardViewModel);
     	},
         
             
     	rewardCardShow: function(e) {
             var bonusPoints = e.view.params.bonusPoints,
                 cardNumber = e.view.params.cardNumber;
-           
-            var rewardsViewModel = new RewardsViewModel(cardNumber, bonusPoints);
             
-            kendo.bind($("#rewardCard"), rewardsViewModel);
+            rewardsViewModel.setValues(cardNumber, bonusPoints);
+            
     	},
+        
+        rewardCardInit: function(e) {
+            var container = e.view.content;
+                $cardFront = container.find("#rewardCardFront"),
+                $cardBack = container.find("#rewardCardBack");
+            
+            singleCardViewModel.appendCardFadeEffect($cardFront, $cardBack);
+        },
         
     	singleCardShow: function (arguments) {
-        	var cardId = arguments.view.params.cardNumber;
-        
-            var singleCardViewModel = new SingleCardViewModel(cardId);
-        	debugger;
-            $("#singleCardView").on("click", ".singleCardDeleteButton", function(e){
-            	debugger;
-                alert('gg');
-            });
+        	var cardNumber = arguments.view.params.cardNumber
+                bonusPoints = arguments.view.params.bonusPoints,
+                cardAmount = arguments.view.params.cardAmount;
             
-            kendo.bind($("#singleCardView"), singleCardViewModel);
+           singleCardViewModel.setValues(cardNumber, bonusPoints, cardAmount);
     	},
+        
+        singleCardInit: function(e) {
+            var container = e.view.content;
+                $cardFront = container.find("#cardFront"),
+                $cardBack = container.find("#cardBack");
+            
+            singleCardViewModel.appendCardFadeEffect($cardFront, $cardBack);
+        },
+        
         storesInit: function(){
 			_mapElem = document.getElementById("map");
 			_storeListElem = document.getElementById("storeList");
@@ -247,16 +252,21 @@ function onDeviceReady() {
                 $(".offline").show();
             }
     	}
-    
     }
+    
     _app.init();
-	$.extend(window, {
+	cardsData.init();
+    cardsData.cards.bind("change", writeIntoLocalStorage);
+    
+    $.extend(window, {
 		cardsData: _app.cardsData,
 		rewardCardShow: _app.rewardCardShow,
+        rewardCardInit: _app. rewardCardInit,
 		singleCardShow: _app.singleCardShow,
+        singleCardInit: _app.singleCardInit,
 		onAddCardViewShow: _app.onAddCardViewShow,
         announcementListViewTemplatesInit: _app.announcementListViewTemplatesInit,
         storezShow: _app.storesShow,
-        storesInit: _app.storesInit, 
+        storesInit: _app.storesInit,
 	});
 }(jQuery, console, document));

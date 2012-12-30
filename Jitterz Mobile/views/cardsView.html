@@ -16,65 +16,10 @@
         </ul>
 	</div>
 </div>
-
-<div data-role="view" id="singleCardView" data-style="inset" data-title="Card" data-show="singleCardShow">
-	<header data-role="header" data-id="jitterz-default-header">
-		<div data-role="navbar">
-			<a class="nav-button" data-role="backbutton" data-align="left">Back</a>
-			<span data-role="view-title"></span>
-            <a id="editCardButton" data-role="button" data-align="right" data-rel="actionsheet" href="#singleCardActions" >Edit</a>
-		</div>
-	</header>
-	<div id="cardViewContent" data-role="content" class="km-insetcontent" data-style="inset">
-		<div id="singleCardContainer" class="clear">
-			<div id="cardFront" class="cardStyle silver" >
-				<div class="clear">
-					<div class="iconContainer">
-						<div class="icon"></div>
-					</div>
-					<div class="bonusContainer clear">
-						<span class="bonusPoints" data-bind="text: cardAmount"></span>
-						<div class="dateLine">
-							<span>as of</span>
-							<span data-bind="text: currentDate"></span>
-						</div>
-					</div>
-				</div>
-				<div class="amountLine">
-					<div class="cardNumberLine" data-bind="text: cardId"></div>
-				</div>
-			</div>
-			<div id="cardBack" class="cardStyle clear silver">
-				<img id="barcodeImage" data-bind='attr: {src:barcodeUrl}' alt="Shop Card Id"/>
-			</div>
-		</div>
-	</div>
-    <ul data-role="actionsheet" class="singleCardActionsList" id="singleCardActions" data-popup='{"direction": "left"}'>
-        <li>
-            <a href="#" data-role="button" class="singleCardDeleteButton">Delete</a>
-        </li>
-    </ul>
-</div>
-
-<!--Templates-->
-<script type="text/x-kendo-template" id="singleCardTamplate" >
-    <div id="singleCardContainer" class="clear"> 
-        <div class="cardStyle" id="cardFront"></div>
-        <div class="cardStyle clear" id="cardBack">
-            <img id="barcodeImage" src="#= barcodeUrl #" alt="Shop Card Id"/>
-        </div>
-    </div>
-    <div id="cardAmount">
-        <div class="singleCardPriceBox">#= cardAmount #</div>
-        <div>
-            <span>as of</span>
-            <span>#= currentDate #<span>
-        </div>
-    </div>
-</script>
         
 <script type="text/x-kendo-template" id="cardsListTemplate">
-    <a class="listCard clear" data-cardId="${cardNumber}" data-role="listview-link" href='singleCardView?bonusPoints=${bonusPoints}&cardNumber=${cardNumber}'>
+    <a class="listCard clear" data-cardId="${cardNumber}" data-role="listview-link" 
+        href='views/singleCardView.html?bonusPoints=${bonusPoints}&cardNumber=${cardNumber}&cardAmount=${amount}'>
         <div 
     #if(bonusPoints<50){#
         class="silverCardImage cardPicture"

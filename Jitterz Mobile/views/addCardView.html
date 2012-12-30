@@ -1,9 +1,9 @@
-<div data-role="view" id="addCardView" data-title="Add Card" data-show="onAddCardViewShow">
+<div data-role="view" id="addCardView" data-title="Add Card" data-show="onAddCardViewShow" data-model="addCardViewModel">
 	<div data-role="header">
 		<div data-role="navbar">
 			<a href="#cardsView" data-role="button" data-align="left">Cancel</a>
             <span data-role="view-title"></span>
-            <button data-role="button" data-align="right" id="buttonAddNewCardView"  data-bind="events: { touchend: addNewCard }, enabled: canAddCard">Add</button>
+            <button data-role="button" data-align="right" id="buttonAddNewCardView"  data-bind="enabled: canAddCard, events: { click: addNewCard }">Add</button>
 		</div>
 	</div>
     <div data-role="content">

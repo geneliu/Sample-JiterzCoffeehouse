@@ -165,7 +165,7 @@
     display:none;
 }
 
-.cardStyle
+#cardFront, #cardBack, #rewardCardFront, #rewardCardBack 
 {
     border-radius: 10px;
     cursor:pointer;
@@ -437,9 +437,7 @@ input::-webkit-inner-spin-button {
     -webkit-appearance: none;
     margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
 }
-#buttonAddNewCard {
-    bottom: 3px;
-}
+
 #buttonAddNewCardView {
     bottom:0px;
 }
